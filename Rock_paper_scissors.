@@ -1,0 +1,95 @@
+import random
+u= 0
+c = 0
+ch = ''
+
+def goto():
+    global u, c, ch
+    ch = input('\nDo you want to continue?? press "y" or "n": ').lower()
+    if ch == 'y':
+        rsp()
+        
+                #continue
+    elif ch== 'n':
+        print('\n\n----------Final Result----------------')
+        print('----Player Total Wins:',u,'----Computer Total Wins:',c)
+        if u>c:
+            print('"***Player won***"')
+        elif c==u==0 or c==u ==1:
+            print('"***Ohh its Tie***""')
+        else:
+            print('"***Computer won***"')
+            
+                #break      
+    else:
+            print('Enter "y" or "n" ')
+            goto()
+
+
+
+
+
+def rsp():
+    global c
+    global u
+    
+    print('Lets Play....Rock Paper Sissor............')
+    list1 = ['rock', 'paper', 'sissor']
+    list2 = [('rock','paper'),('paper','rock'),('rock','sissor'),('sissor','rock'),('sissor','paper'),('paper','sissor'),
+             ('rock','rock'),('paper','paper'),('sissor','sissor')]
+
+    while True:
+        no1 = input('\nEnter your chioce \n1.sissor\n2. rock\n3.paper\n\n')
+        if no1.isalpha() and no1 == 'rock' or no1 == 'paper' or no1 == 'sissor':
+            no2 = random.choice(list1)
+            i = list2.index((no1,no2))
+            c1,c2 = list2[i]
+
+            if c1 == 'rock' and c2 == 'paper':
+                print('"***Computer Won***"')
+                print('\nPlayer choice:',no1,'\nComputer choice:',no2)
+                c += 1
+
+            elif c1 == 'paper' and c2 == 'rock':
+                print('"***You Won***"')
+                print('\nPlayer choice:',no1,'\nComputer choice:',no2)
+                u += 1
+
+            elif c1 == 'rock' and c2 == 'sissor':
+                print('"***ou Won***"')
+                print('\nPlayer choice:',no1,'\nComputer choice:',no2)
+                u += 1
+
+            elif c1 == 'sissor' and c2 == 'rock':
+                print('"***Computer Won***"')
+                print('\nPlayer choice:',no1,'\nComputer choice:',no2)
+                c += 1
+
+            elif c1 == 'sissor' and c2 == 'paper':
+                print('"***Player Won***"')
+                print('\nPlayer choice:',no1,'\nComputer choice:',no2)
+                u += 1
+
+            elif c1 == 'paper' and c2 == 'sissor':
+                print('"***Computer Won***"')
+                print('\nPlayer choice:',no1,'\nComputer choice:',no2)
+                c += 1
+
+            elif c1 == c2 == 'paper' or c1 == c2 == 'rock' or c1 == c2 == 'sissor':
+                print('"***Ohh its Tie***""')
+                print('\nPlayer choice:',no1,'\nComputer choice:',no2)
+
+
+        else:
+            print('please Enter Correct Choice')
+            continue
+        
+        goto()
+        if ch == 'n':
+            break
+                
+
+        
+rsp() 
+
+    
